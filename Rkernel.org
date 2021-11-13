@@ -1,0 +1,6 @@
+
+* R Kernel
+
+#+begin_src bash
+conda activate r-recommended r-irkernel
+#+end_src
