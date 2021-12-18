@@ -1,8 +1,15 @@
-* Ubuntu and Windows 7 dual boot installation
-** Legacy Boot
-- For legacy boot, we donot need boot partition of Ubuntu. Why? The boot partition will automatically change the system to UEFI boot, while windows 7 is strict in terms of laptops with legacy or UEFI boot.
-- Make sure your laptop uses legacy or UEFI or Both. Mostly, older laptops (like around 2010 or before) use legacy boot.
-** Partition Sample
+* Ubuntu 20.4 and Windows 7 dual boot installation
+** Install Windows 7
+Follow the general instructions
+** Install Ubuntu
+*** Legacy BIOS 
+Make sure whether your laptop uses legacy or UEFI or Both [[https://itsfoss.com/check-uefi-or-bios/][How to Check if Your Computer Uses UEFI or BIOS in both Linux and Windows]]. Mostly, older laptops (like around 2010 or before) use legacy BIOS.
+
+Follow [[https://itsfoss.com/install-ubuntu-dual-boot-mode-windows/][How To Install Ubuntu Along With Windows for legacy BIOS]]
+  - *Step 5: Create root, swap and home* after the creation of partitions, select install. The installation will warn about Boot partition, ignore the warnings. For legacy boot, we donot need boot partition of Ubuntu.
+    - In case, you create a boot partition. The boot partition will automatically change the system to UEFI boot, while windows is strict in terms of laptops with legacy or UEFI boot. Thus Grub or Ubuntu will not load the windows partition/installation.
+*** Partition Sample
+#+NAME: TODO
 | Partition (Space) | Size   | System | Partition |
 |-------------------+--------+--------+-----------|
 | sda               | 465,8G | Total  | disk      |
@@ -14,5 +21,6 @@
 | ├─sda6            | 5,6G   | Ubuntu | SWAP      |
 | └─sda7            | 122G   | Ubuntu | /home     |
 |-------------------+--------+--------+-----------|
-** Backup
+
+*** Backup
 Get a backup of home directory, in case important files and configurations of the previous installation: [[https://www.ubuntugeek.com/how-to-copy-home-directory-to-new-hard-drive.html][Pack and Unpack Method]]
