@@ -1,0 +1,17 @@
+* Ubuntu and Windows 7 dual boot installation
+** Legacy Boot
+- For legacy boot, we donot need boot partition of Ubuntu. Why? The boot partition will automatically change the system to UEFI boot, while windows 7 is strict in terms of laptops with legacy or UEFI boot.
+- Make sure your laptop uses legacy or UEFI or Both. Older laptops (like around 2010 or before) mostly use legacy boot.
+** Partition Sample
+| Partition (Space) | System |                    |
+|-------------------+--------+--------------------|
+| sda  465,8G       | Whole  | disk               |
+| ├─sda1 500M       |        |                    |
+| ├─sda2 97,2G      | Win    | NTFS               |
+| ├─sda3 184,1G     | Win    | NTFS               |
+| ├─sda4 184,1G     | Ubuntu | Extended Partition |
+| ├─sda5 56,5G      | Ubuntu | / (Root)           |
+| ├─sda6 5,6G       | Ubuntu | SWAP               |
+| └─sda7 122G       | Ubuntu | /home              |
+|                   |        |                    |
+|-------------------+--------+--------------------|
