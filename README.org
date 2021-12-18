@@ -1,10 +1,28 @@
-* Ubuntu 20.4 and Windows 7 dual boot installation
-** Install Windows 7
-Follow the general instructions
-** Install Ubuntu
-*** Legacy BIOS 
-Make sure whether your laptop uses legacy or UEFI or Both [[https://itsfoss.com/check-uefi-or-bios/][How to Check if Your Computer Uses UEFI or BIOS in both Linux and Windows]]. Mostly, older laptops (like around 2010 or before) use legacy BIOS.
+#+title: Ubuntu 20.4 and Windows 7 dual installation for Legacy BIOS
+#+author: Behroz
 
+** Legacy BIOS 
+
+Check whether your laptop uses legacy or UEFI or Both [[https://itsfoss.com/check-uefi-or-bios/][How to Check if Your Computer Uses UEFI or BIOS in both Linux and Windows]]. Mostly, older laptops (like around 2010 or before) use legacy BIOS.
+
+** Install Windows 7
+
+Follow the general instructions
+
+** Install Ubuntu
+
+*** Backup
+Get a backup of home directory, in case important files and configurations of the previous installation:
+
+  [[https://www.ubuntugeek.com/how-to-copy-home-directory-to-new-hard-drive.html][Method 1: Pack and Unpack]]
+    - *Note:* It will also archive files in trash bin, if you want empty your trash bin before proceeding
+    -  In case of error try: ~sudo tar -cvpzf backup-home.tar.gz /home/~
+  
+  [[https://askubuntu.com/questions/21321/move-home-folder-to-second-drive][Method 2: Copy Home Files to USB or Second Drive]]
+    
+    ~sudo rsync -avx /home/ /media/username/USB~
+
+*** Installation Steps
 Follow [[https://itsfoss.com/install-ubuntu-dual-boot-mode-windows/][How To Install Ubuntu Along With Windows for legacy BIOS]]
   - *Step 5: Create root, swap and home* after the creation of partitions, select install. The installation will warn about Boot partition, ignore the warnings. For legacy boot, we donot need boot partition of Ubuntu.
     - In case, you create a boot partition. The boot partition will automatically change the system to UEFI boot, while windows is strict in terms of laptops with legacy or UEFI boot. Thus Grub or Ubuntu will not load the windows partition/installation.
@@ -22,5 +40,3 @@ Follow [[https://itsfoss.com/install-ubuntu-dual-boot-mode-windows/][How To Inst
 | └─sda7            | 122G   | Ubuntu | /home     |
 |-------------------+--------+--------+-----------|
 
-*** Backup
-Get a backup of home directory, in case important files and configurations of the previous installation: [[https://www.ubuntugeek.com/how-to-copy-home-directory-to-new-hard-drive.html][Pack and Unpack Method]]
