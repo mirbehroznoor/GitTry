@@ -4,3 +4,6 @@
 #+begin_src bash
 conda activate r-recommended r-irkernel
 #+end_src
+
+* Latex Tutorial
+[[https://www.flutterbys.com.au/stats/tut/tut17.1.html][A Comprehensive LaTeX Tutorial]]
