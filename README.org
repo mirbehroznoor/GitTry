@@ -1,17 +1,19 @@
-#+title: Ubuntu 20.4 and Windows 7 dual installation for Legacy BIOS
 #+author: Behroz
+#+options: toc:t
 
+* Ubuntu 20.4 and Windows 7 dual installation for Legacy BIOS
 ** Legacy BIOS 
 
 Check whether your laptop uses legacy or UEFI or Both [[https://itsfoss.com/check-uefi-or-bios/][How to Check if Your Computer Uses UEFI or BIOS in both Linux and Windows]]. Mostly, older laptops (like around 2010 or before) use legacy BIOS.
 
-** Install Windows 7
+** Windows 7
 
-Follow the general instructions
+Follow the general instructions for installation
 
-** Install Ubuntu
+** Ubuntu
 
 *** Backup
+-----------
 Get a backup of home directory, in case important files and configurations of the previous installation:
 
   [[https://www.ubuntugeek.com/how-to-copy-home-directory-to-new-hard-drive.html][Method 1: Pack and Unpack]]
@@ -20,23 +22,55 @@ Get a backup of home directory, in case important files and configurations of th
   
   [[https://askubuntu.com/questions/21321/move-home-folder-to-second-drive][Method 2: Copy Home Files to USB or Second Drive]]
     
-    ~sudo rsync -avx /home/ /media/username/USB~
+#+begin_src shell
+# Copy the folder from one dir to other
+sudo rsync -avx /dir/from /dir/to/
+    
+# In case you want to copy all files from one dir to other, add "." 
+sudo rsync -avx /dir/from/. /dir/to/
+#+end_src
 
 *** Installation Steps
+-----------------------
 Follow [[https://itsfoss.com/install-ubuntu-dual-boot-mode-windows/][How To Install Ubuntu Along With Windows for legacy BIOS]]
-  - *Step 5: Create root, swap and home* after the creation of partitions, select install. The installation will warn about Boot partition, ignore the warnings. For legacy boot, we donot need boot partition of Ubuntu.
-    - In case, you create a boot partition. The boot partition will automatically change the system to UEFI boot, while windows is strict in terms of laptops with legacy or UEFI boot. Thus Grub or Ubuntu will not load the windows partition/installation.
-*** Partition Sample
-#+NAME: TODO
-| Partition (Space) | Size   | System | Partition |
-|-------------------+--------+--------+-----------|
-| sda               | 465,8G | Total  | disk      |
-| ├─sda1            | 500M   |        |           |
-| ├─sda2            | 97,2G  | Windows| NTFS      |
-| ├─sda3            | 184,1G | Windows| NTFS      |
-| ├─sda4            | 184,1G | Ubuntu | Extended  |
-| ├─sda5            | 56,5G  | Ubuntu | / (Root)  |
-| ├─sda6            | 5,6G   | Ubuntu | SWAP      |
-| └─sda7            | 122G   | Ubuntu | /home     |
-|-------------------+--------+--------+-----------|
+  - *Step 5: Create root, swap and home* 
 
+*Partition Sample*
+
+#+NAME:    Partition
+: Partition         | Size   | System     | Partition 
+: -----------------------------------------------------
+: sda               | 465,8G | Total      | Whole disk
+*Windows Partitions*
+: ├─sda1            | 500M   | -          | System Reserved 
+: ├─sda2            | 97,2G  | Windows    | Win OS          
+: ├─sda3            | 184,1G | Windows    | Local-disk      
+*Ubuntu Partitions*
+: ├─sda4            | 184,1G | Ubuntu     | Extended  
+: -----------------------------------------------------
+:   ├─sda5          | 56,5G  | Ubuntu     | /        
+:   ├─sda6          | 5,6G   | Ubuntu     | SWAP     
+:   └─sda7          | 122G   | Ubuntu     | /home    
+
+
+  - After the creation of partitions, select install. The installation will warn about Boot partition, ignore the warnings. For legacy boot, we donot need boot partition of Ubuntu.
+
+*** Boot Failure:
+------------------
+*Important* 
+  1. Make sure the installation completed
+  2. Connect to internet 
+  
+#+begin_src shell
+sudo add-apt-repository ppa:yannubuntu/boot-repair
+sudo apt update
+sudo apt install -y boot-repair
+boot-repair
+#+end_src 
+
+*Tutorial 1* 
+[[https://www.howtogeek.com/114884/how-to-repair-grub2-when-ubuntu-wont-boot/][Ubuntu GRUB Boot-Repair Tutorial]]
+
+*Tutorial 2*
+[[https://linuxhint.com/ubuntu_boot_repair_tutorial/][Ubunt Boot Repair Tutorial]]
+  - *Recommended Repair* is sufficient, *Advanced Options* Boot repair is a bit tricky :) for more
