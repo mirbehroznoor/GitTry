@@ -73,5 +73,5 @@ boot-repair
 
 *Tutorial 2*
 [[https://linuxhint.com/ubuntu_boot_repair_tutorial/][Ubunt Boot Repair Tutorial]]
-  - *Recommended Repair* is sufficient, 
-      - *Advanced Options* Boot repair is a bit tricky for me :)
+  - Basic *Recommended Repair* is usually sufficient, 
+      - *Advanced Options* is a bit tricky for me :)
