@@ -1,7 +1,9 @@
 #+author: Behroz
-#+options: toc:t
+
 
 * Ubuntu 20.4 and Windows 7 Dual Boot Installation: Legacy BIOS
+*These Notes are the result of long hours of reading and, Trail and Error*
+
 ** Legacy BIOS 
 
 Check whether your laptop uses legacy or UEFI or Both [[https://itsfoss.com/check-uefi-or-bios/][How to Check if Your Computer Uses UEFI or BIOS in both Linux and Windows]]. Mostly, older laptops (like around 2010 or before) use legacy BIOS.
