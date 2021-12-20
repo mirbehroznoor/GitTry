@@ -14,11 +14,11 @@ Follow the general instructions for installation
 
 *** Backup
 -----------
-Get a backup of home directory, in case important files and configurations of the previous installation:
+Get a backup of home directory, better to keep a backup of important files and configurations of the previous installation:
 
   [[https://www.ubuntugeek.com/how-to-copy-home-directory-to-new-hard-drive.html][Method 1: Pack and Unpack]]
-    - *Note:* It will also archive files in trash bin, if you want empty your trash bin before proceeding
-    -  In case of error try: ~sudo tar -cvpzf backup-home.tar.gz /home/~
+    - *Note:* It will also archive files in trash bin, if you donot want to keep them, empty your trash bin before proceeding
+    -  In case of error try administrator permission: ~sudo tar -cvpzf backup-home.tar.gz /home/~
   
   [[https://askubuntu.com/questions/21321/move-home-folder-to-second-drive][Method 2: Copy Home Files to USB or Second Drive]]
     
