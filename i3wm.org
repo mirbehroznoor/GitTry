@@ -1,0 +1,3 @@
+** i3wm Lenovo Touchpad 
+
+[[https://major.io/2021/07/18/tray-icons-in-i3/][Enable touchpad tap to click in i3]]
