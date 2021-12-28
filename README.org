@@ -1,8 +1,8 @@
 #+author: Behroz
 
 
-# * Ubuntu 20.4 and Windows 7 Dual Boot Installation: Legacy BIOS
-**** /These notes are the result of lots of hours of browsing and, trial and error. Most importantly, to save myself from repeating the same mistakes./
+*** Ubuntu 20.4 and Windows 7 Dual Boot Installation: Legacy BIOS
+/These notes are the result of lots of hours of browsing and, trial and error. Most importantly, to save myself from repeating the same mistakes./
 -----------
 
 ** Legacy BIOS
