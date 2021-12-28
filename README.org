@@ -1,11 +1,11 @@
 #+author: Behroz
 
 
-* Ubuntu 20.4 and Windows 7 Dual Boot Installation: Legacy BIOS
+# * Ubuntu 20.4 and Windows 7 Dual Boot Installation: Legacy BIOS
 **** /These notes are the result of lots of hours of browsing and, trial and error. Most importantly, to save myself from repeating the same mistakes./
 -----------
 
-** Legacy BIOS 
+** Legacy BIOS
 
 Check whether your laptop uses legacy or UEFI or Both [[https://itsfoss.com/check-uefi-or-bios/][How to Check if Your Computer Uses UEFI or BIOS in both Linux and Windows]]. Mostly, older laptops (like around 2010 or before) use legacy BIOS.
 
@@ -22,59 +22,59 @@ Get a backup of home directory, better to keep a backup of important files and c
   [[https://www.ubuntugeek.com/how-to-copy-home-directory-to-new-hard-drive.html][Method 1: Pack and Unpack]]
     - *Note:* It will also archive files in trash bin, if you donot want to keep them, empty your trash bin before proceeding
     -  In case of error try administrator permission: ~sudo tar -cvpzf backup-home.tar.gz /home/~
-  
+
   [[https://askubuntu.com/questions/21321/move-home-folder-to-second-drive][Method 2: Copy Home Files to USB or Second Drive]]
-    
+
 #+begin_src shell
 # Copy the folder from one dir to other
 sudo rsync -avx /dir/from /dir/to/
-    
-# In case you want to copy all files from one dir to other, add "." 
+
+# In case you want to copy all files from one dir to other, add "."
 sudo rsync -avx /dir/from/. /dir/to/
 #+end_src
 
 *** Installation Steps
 -----------------------
 Follow [[https://itsfoss.com/install-ubuntu-dual-boot-mode-windows/][How To Install Ubuntu Along With Windows for legacy BIOS]]
-  - *Step 5: Create root, swap and home* 
+  - *Step 5: Create root, swap and home*
 
 *Partition Sample*
 
 #+NAME:    Partition
-: Partition         | Size   | System     | Partition 
+: Partition         | Size   | System     | Partition
 : -----------------------------------------------------
 : sda               | 465,8G | Total      | Whole disk
 *Windows Partitions*
-: ├─sda1            | 500M   | -          | System Reserved 
-: ├─sda2            | 97,2G  | Windows    | Win OS          
-: ├─sda3            | 184,1G | Windows    | Local-disk      
+: ├─sda1            | 500M   | -          | System Reserved
+: ├─sda2            | 97,2G  | Windows    | Win OS
+: ├─sda3            | 184,1G | Windows    | Local-disk
 *Ubuntu Partitions*
-: ├─sda4            | 184,1G | Ubuntu     | Extended  
+: ├─sda4            | 184,1G | Ubuntu     | Extended
 : -----------------------------------------------------
-:   ├─sda5          | 56,5G  | Ubuntu     | /        
-:   ├─sda6          | 5,6G   | Ubuntu     | SWAP     
-:   └─sda7          | 122G   | Ubuntu     | /home    
+:   ├─sda5          | 56,5G  | Ubuntu     | /
+:   ├─sda6          | 5,6G   | Ubuntu     | SWAP
+:   └─sda7          | 122G   | Ubuntu     | /home
 
 
   - After the creation of partitions, select install. The installation will warn about Boot partition, ignore the warnings. For legacy boot, we donot need boot partition of Ubuntu.
 
 *** Boot Failure:
 ------------------
-*Important* 
+*Important*
   1. Make sure the installation completed
-  2. Connect to internet 
-  
+  2. Connect to internet
+
 #+begin_src shell
 sudo add-apt-repository ppa:yannubuntu/boot-repair
 sudo apt update
 sudo apt install -y boot-repair
 boot-repair
-#+end_src 
+#+end_src
 
-*Tutorial 1* 
+*Tutorial 1*
 [[https://www.howtogeek.com/114884/how-to-repair-grub2-when-ubuntu-wont-boot/][Ubuntu GRUB Boot-Repair Tutorial]]
 
 *Tutorial 2*
 [[https://linuxhint.com/ubuntu_boot_repair_tutorial/][Ubunt Boot Repair Tutorial]]
-  - Basic *Recommended Repair* is usually sufficient, 
+  - Basic *Recommended Repair* is usually sufficient,
       - *Advanced Options* is a bit tricky for me :)
